@@ -96,7 +96,7 @@ if __name__ == "__main__":
     X_train_select=X_train[feature]
     X_test_select=X_test[feature]
     best_iter = lgbCV(X_train_select,X_test_select, y_train, y_test)
-    verify_sample_select=verify_sample[feature]
+    verify_sample_select=verify_sample[feature].fillna(0)
     predict=sub(X_train_select,verify_sample_select,y_train,best_iter)
     predict_result = pd.concat([verify_sample['user_id'],pd.Series(predict)],axis=1)
     
